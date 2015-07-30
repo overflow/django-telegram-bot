@@ -18,7 +18,15 @@ class Command(BaseCommand):
         try:
             user = User.objects.get(id=format(message['from']['id']))
         except  User.DoesNotExist:
-            user = User.objects.create(id=format(message['from']['id']), first_name=message['from']['first_name'], last_name=message['from']['last_name'])
+            first_name = ''
+            last_name = ''
+            if 'first_name' in message['from']:
+
+                first_name = message['from']['first_name'] 
+
+            if 'last_name' in message['from']:
+                last_name = message['from']['last_name']
+            user = User.objects.create(id=format(message['from']['id']), first_name=first_name, last_name=last_name)
             if ('username' in message['from']):
                 user.username = message['from']['username']
                 user.save()
@@ -34,7 +42,6 @@ class Command(BaseCommand):
         except Exception as e:
             #logging.warning('Something went wrong when fetching updates: ' + str(e))
             return updateId
-        
         if data['ok'] == True:
             for update in data['result']:
                 
