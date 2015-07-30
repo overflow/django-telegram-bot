@@ -11,7 +11,7 @@ import time
 
 class Command(BaseCommand):
     help = "Run telegram bot."
-    token = Config.objects.all()[0].token
+    token = ''
     url = 'https://api.telegram.org/bot' + token + '/'
     
     def _user(self, message):

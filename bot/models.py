@@ -1,9 +1,8 @@
 from django.db import models
 
 # Create your models here.
-class Config(models.Model):
-    update_id = models.CharField( max_length='40')
-    token = models.CharField(max_length='100')
+class Update(models.Model):
+    update_id = models.CharField(primary_key=True, max_length='40')
 
 """
 {'ok': True, 'result': [{'update_id': 821066347, 'message': {'text': 'asd', 'message_id': 7, 'from': {'first_name': 'Orlando', 'last_name': 'Fiol', 'id': 61208967, 'username': 'overf1ow'}, 'chat': {'first_name': 'Orlando', 'last_name': 'Fiol', 'id': 61208967, 'username': 'overf1ow'}, 'date': 1438263658}}]}
